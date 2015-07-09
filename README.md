@@ -12,3 +12,6 @@ People responding to meetings are identified by the GUID in the URL (they do not
 
 There are currently two types of users: admin, none admin.
 The difference is admins can manager users.
+
+
+This is meant to be a flat 1 folder install with no frameworks.
