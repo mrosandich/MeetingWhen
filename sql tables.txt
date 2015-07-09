@@ -1,0 +1,91 @@
+
+CREATE TABLE `meetingwhen_main` (
+  `meeting_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `title` varchar(200) DEFAULT NULL,
+  `description` text,
+  `is_active` int(11) DEFAULT NULL,
+  `GUID` varchar(200) DEFAULT NULL,
+  `email_sent` varchar(10) NOT NULL DEFAULT '0',
+  `email_fullname` varchar(100) NOT NULL,
+  `email_email` varchar(100) NOT NULL,
+  `email_signature` varchar(250) NOT NULL,
+  PRIMARY KEY (`meeting_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `meetingwhen_main_dates` (
+  `dates_id` int(11) NOT NULL AUTO_INCREMENT,
+  `meeting_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date_and_time` datetime NOT NULL,
+  PRIMARY KEY (`dates_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+/*
+	Author	: Mell Rosandich
+	Date	: 6/29/2015
+	email	: mell@ourace.com
+	
+	
+	Copyright 2015 Mell Rosandich
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+*/
+
+
+CREATE TABLE `meetingwhen_people` (
+  `people_id` int(11) NOT NULL AUTO_INCREMENT,
+  `meeting_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `GUID` varchar(200) DEFAULT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `sentemail` int(11) DEFAULT '0',
+  `is_done` int(11) DEFAULT NULL,
+  `inactive` int(11) DEFAULT '0',
+  `cant_go` int(11) DEFAULT NULL,
+  `cant_go_reason` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`people_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `meetingwhen_people_dates` (
+  `pdates_id` int(11) NOT NULL AUTO_INCREMENT,
+  `meeting_id` int(11) NOT NULL,
+  `people_id` int(11) NOT NULL,
+  `slot_using_id` int(11) NOT NULL,
+  `people_guid` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  PRIMARY KEY (`pdates_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+
+
+CREATE TABLE `meetingwhen_users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) COLLATE latin1_german2_ci NOT NULL,
+  `password` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `fullname` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `email` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `is_admin` int(11) NOT NULL DEFAULT '0',
+  `is_activated` int(11) NOT NULL DEFAULT '0',
+  `email_signature` varchar(250) COLLATE latin1_german2_ci NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+
+INSERT INTO `meetingwhen_users` (`username`, `password`, `fullname`, `email`, `is_admin`, `is_activated`) VALUES
+('admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'Default Admin', 'admin@notarealdomain.org', 1, 1),
+('basicuser1', 'abfe2d56a3ac2f1fd4fd0341ce779ccb', 'Basic User 2', 'someone@notarealdomain.org', 0, 1);

@@ -1,0 +1,97 @@
+/*
+	Author	: Mell Rosandich
+	Date	: 6/29/2015
+	email	: mell@ourace.com
+	
+	
+	Copyright 2015 Mell Rosandich
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+*/
+
+body{
+    font-size: .80em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0px;
+    padding: 0px;
+    color: black;
+}
+
+#maintbl{
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+}
+
+#maintbl td{
+	border: 1px solid #666;
+	padding: 4 4 4 4;
+}
+
+.cantgo{ 
+	background-color: #F33;
+}
+
+.cantgorow{ 
+	background-color: #F66;
+}
+
+.tdg {
+	background-color: #d1f3d1
+}
+
+#trcan{
+	display:none;
+}
+.cantgosta{
+	background-color: #999;
+}
+
+#ck-button{
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+    float:left;
+	align:center;
+	width: 100px;
+}
+
+#ck-button:hover{
+    background:red;
+}
+
+#ck-button label{
+    float:left;
+    width:4.0em;
+	width: 100px;
+}
+
+#ck-button label span{
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+	width: 100px;
+}
+
+#ck-button label input{
+    position:absolute;
+    top:-20px;
+	width: 100px;
+}
+
+#ck-button input:checked + span{
+    background-color:#911;
+    color:#fff;
+	width: 100px;
+}

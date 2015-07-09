@@ -1,0 +1,169 @@
+/*
+	Author	: Mell Rosandich
+	Date	: 6/29/2015
+	email	: mell@ourace.com
+	
+	
+	Copyright 2015 Mell Rosandich
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+*/
+body   
+{
+    font-size: .80em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0px;
+    padding: 0px;
+    color: black;
+	margin: 20 20 20 20;
+}
+#maintbl {
+	
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+	
+}
+
+#maintbl td{
+	border: 1px solid #666;
+}
+
+#emblock{display:none;}
+
+.tdg {background-color: #d1f3d1}
+.t_date{ width:100px;}
+.t_time{ width:100px;}
+
+
+
+
+
+
+
+.ui-timepicker-wrapper {
+	overflow-y: auto;
+	height: 150px;
+	width: 6.5em;
+	background: #fff;
+	border: 1px solid #ddd;
+	-webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	outline: none;
+	z-index: 10001;
+	margin: 0;
+}
+
+.ui-timepicker-wrapper.ui-timepicker-with-duration {
+	width: 13em;
+}
+
+.ui-timepicker-wrapper.ui-timepicker-with-duration.ui-timepicker-step-30,
+.ui-timepicker-wrapper.ui-timepicker-with-duration.ui-timepicker-step-60 {
+	width: 11em;
+}
+
+.ui-timepicker-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ui-timepicker-duration {
+	margin-left: 5px; color: #888;
+}
+
+.ui-timepicker-list:hover .ui-timepicker-duration {
+	color: #888;
+}
+
+.ui-timepicker-list li {
+	padding: 3px 0 3px 5px;
+	cursor: pointer;
+	white-space: nowrap;
+	color: #000;
+	list-style: none;
+	margin: 0;
+}
+
+.ui-timepicker-list:hover .ui-timepicker-selected {
+	background: #fff; color: #000;
+}
+
+li.ui-timepicker-selected,
+.ui-timepicker-list li:hover,
+.ui-timepicker-list .ui-timepicker-selected:hover {
+	background: #1980EC; color: #fff;
+}
+
+li.ui-timepicker-selected .ui-timepicker-duration,
+.ui-timepicker-list li:hover .ui-timepicker-duration {
+	color: #ccc;
+}
+
+.ui-timepicker-list li.ui-timepicker-disabled,
+.ui-timepicker-list li.ui-timepicker-disabled:hover,
+.ui-timepicker-list li.ui-timepicker-selected.ui-timepicker-disabled {
+	color: #888;
+	cursor: default;
+}
+
+.ui-timepicker-list li.ui-timepicker-disabled:hover,
+.ui-timepicker-list li.ui-timepicker-selected.ui-timepicker-disabled {
+	background: #f2f2f2;
+}
+
+#UserTableList{
+	width:680px;
+}
+#UserTableList th{
+	font-weight: bold;
+	padding: 5px;
+	border-bottom: 1px solid #666;
+}
+#UserTableList tr:hover{
+	background-color: #FF0;
+}
+
+
+#MyMeetings{
+	width:960px;
+}
+#MyMeetings th{
+	font-weight: bold;
+	padding: 5px;
+	border-bottom: 1px solid #666;
+	font-size:14px;
+}
+#MyMeetings tr:hover{
+	background-color: #FF0;
+}
+#MyMeetings td {
+	font-size:12px;
+}
+
+
+.td150{
+	width:150px;
+}
+
+.menu_unselected{
+	text-decoration: underline;
+}
+.menu_unselected:hover {
+	text-decoration: none;
+}
+.menu_selected{
+	font-weight: bold;
+	text-decoration: none;
+}
