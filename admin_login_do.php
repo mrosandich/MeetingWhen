@@ -46,7 +46,7 @@ if($PageState == "dologin")
 		$SelectSQL = "select * from meetingwhen_users where username='$UserName' and password='$Password' and is_activated='1' and is_ldap='0' limit 1";//this SQL will change if ldap is used
 		
 		if($UseLDAPSystem == 1){
-			$LdapCheck = new cLDAP();
+			$LdapCheck = new cLDAP($LDAPConfig);
 			$LdapCheck->initLDAPMySQL($link);
 			$isLoggedIn = $LdapCheck->validateUser($UserName,GetFormValue("password", "","Password"));
 			if( $isLoggedIn == 1 ){

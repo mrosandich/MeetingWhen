@@ -25,13 +25,13 @@ defined('SYSLOADED') OR die('No direct access allowed.');
 
 class cLDAP{
 
-	var $app_ldap_ip = "192.168.1.100";
-	var $app_ldap_port = 389;
-	var $app_user = 'CN=MyADSearchAccount,OU=Austin,DC=ourace,DC=com';
-	var $app_pass = 'Com!plex%Passw0rd';
-	var $app_error_message = "";
-	var $app_search_user_base = "OU=Austin,DC=ourace,DC=com";
-	var $app_use_activedirectory = 1; //set to 0 if you want to use a a normal search expression
+	var $app_ldap_ip 				= '';
+	var $app_ldap_port 				= '';
+	var $app_user 					= '';
+	var $app_pass 					= '';
+	var $app_error_message 			= '';
+	var $app_search_user_base 		= '';
+	var $app_use_activedirectory 	= ''; 
 	
 	//------------------------------------
 	//	You don't need to anything below
@@ -50,6 +50,16 @@ class cLDAP{
 	var $SQLLink = "";
 	var $SQLUseAutoUser = 0;
 	var $SQLNewUserId = "";
+	
+	public function __construct($LDAPConfig){
+		$this->app_ldap_ip 				= $LDAPConfig['app_ldap_ip'];
+		$this->app_ldap_port 			= $LDAPConfig['app_ldap_port'];
+		$this->app_user 				= $LDAPConfig['app_user'];
+		$this->app_pass 				= $LDAPConfig['app_pass'];
+		$this->app_error_message 		= "";
+		$this->app_search_user_base 	= $LDAPConfig['app_search_user_base'];
+		$this->app_use_activedirectory 	= $LDAPConfig['app_use_activedirectory']; 
+	}
 	
 	//if you want to auto add user to the system via a valid login then you need to pass a valid MySQL link to this function.
 	function initLDAPMySQL($SQLLink){

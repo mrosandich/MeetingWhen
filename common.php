@@ -45,6 +45,12 @@ $PasswordMaxLength = 100;
 
 //Use LDAP for authentication
 $UseLDAPSystem = 0;
+$LDAPConfig['app_ldap_ip'] 				= "192.168.1.100";
+$LDAPConfig['app_ldap_port'] 			= 389;
+$LDAPConfig['app_user'] 				= 'CN=MyADSearchAccount,OU=Austin,DC=ourace,DC=com';
+$LDAPConfig['app_pass'] 				= 'Com!plex%Passw0rd';
+$LDAPConfig['app_search_user_base'] 	= "OU=Austin,DC=ourace,DC=com";
+$LDAPConfig['app_use_activedirectory'] 	= 1;//set to 0 if you want to use a a normal search expression
 
 function GetFormValue($Key,$DefaultValue,$RegCleanType,$EscapeMySql = 0){
 	$ReturnValue = $DefaultValue;
