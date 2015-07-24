@@ -64,6 +64,12 @@ if($PageState == "edituser"&& IsLoggedInAndAdmin() == true)
 		<td><label for="is_admin">Account is enabled</label></td>
 		<td><input type="checkbox" id="is_activated" name="is_activated" value="1" <?php if($MySqlSet[0]['is_activated'] == 1){echo "checked";} ?>/></td>
 	</tr>
+	<?php if($UseLDAPSystem == 1 ){ ?>
+	<tr>
+		<td><label for="is_ldap">Account is LDAP linked</label></td>
+		<td><input type="checkbox" id="is_ldap" name="is_ldap" value="1" <?php if($MySqlSet[0]['is_ldap'] == 1){echo "checked";} ?>/></td>
+	</tr>
+	<?php } ?>
 	<tr>
 		<td>&nbsp;</td>
 		<td><input type="submit" value="Update User" /></td>

@@ -61,6 +61,8 @@ if($PageState == "edituserdo" && IsLoggedInAndAdmin() == true)
 		$UserName 	= GetFormValue("username", "","AlphaNumeric",1);
 		$IsAdmin 	= GetFormValue("is_admin", "0","Numeric",1);
 		$IsActivated= GetFormValue("is_activated", "0","Numeric",1);
+		$IsLDAP		= GetFormValue("is_ldap", "0","Numeric",1);
+		
 		$Password 	= GetFormValue("password", "","Password");
 		$Password 	= DataBaseCleanEscapeValue( md5( $Password ));
 		
@@ -73,14 +75,17 @@ if($PageState == "edituserdo" && IsLoggedInAndAdmin() == true)
 		if( GetFormValue("password", "","AlphaNumeric") != "" ){
 			$UpdateSQL .= "password='$Password',";
 		}
+		if( $UseLDAPSystem == 1 ){
+			$UpdateSQL .= "is_ldap='$IsLDAP',";
+		}
 		$UpdateSQL .= "is_admin='$IsAdmin',is_activated='$IsActivated'
 			where user_id='$SelectedUserid'";
 			
 		mysql_query($UpdateSQL);
 		$RowsUpdatedCnt = mysql_affected_rows($link);
-		if( $RowsUpdatedCnt == 0 || $RowsUpdatedCnt == false ){
+		if( ($RowsUpdatedCnt == 0 || $RowsUpdatedCnt == false) && mysql_error()!="" ){
 			$PageState = "edituser";
-			$UserMessageResponse = 'There was an error processing your request. Please try again.';
+			$UserMessageResponse = 'There was an error processing your request. Please try again.<br >' . mysql_error();
 		}
 		else{
 			$PageState = "users";

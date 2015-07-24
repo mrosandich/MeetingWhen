@@ -43,7 +43,7 @@ if($PageState == "dologin")
 		$UserName 	= GetFormValue("username", "","UserName",1);
 		$Password 	= GetFormValue("password", "","Password");
 		$Password 	= DataBaseCleanEscapeValue(md5( $Password ));
-		$SelectSQL = "select * from meetingwhen_users where username='$UserName' and password='$Password' and is_activated='1' limit 1";//this SQL will change if ldap is used
+		$SelectSQL = "select * from meetingwhen_users where username='$UserName' and password='$Password' and is_activated='1' and is_ldap='0' limit 1";//this SQL will change if ldap is used
 		
 		if($UseLDAPSystem == 1){
 			$LdapCheck = new cLDAP();
