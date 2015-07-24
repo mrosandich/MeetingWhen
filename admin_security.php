@@ -23,9 +23,19 @@
 defined('SYSLOADEDADMIN') OR die('No direct access allowed.');
 if( IsLoggedInAndAdmin() == false ){
 	
-	//public pages that anyone can use
-	if($PageState != "new" && $PageState != "my" && $PageState != "" && $PageState != "login" && $PageState != "logout"){
+	//Fill the arays with allowed page states
+	$PublicPages 	= array("logout","login","dologin","");
+	$UserPages		= array("profile","editprofiledo","new","savenew","my","myedit","saveedit","dologin");
+	
+	
+	//restrict Logged in users pages to public and UserPages
+	if( IsLoggedIn() == true && ( in_array($PageState,$UserPages) == false && in_array($PageState,$PublicPages) == false ) ){
 		$UserMessageResponse = "The page your are trying to access requires an administrative account.";
+		$PageState="";
+	}
+	
+	if( IsLoggedIn() == false && in_array($PageState,$PublicPages) == false ){
+		$UserMessageResponse = "The page your are trying to access requires you to be logged in.";
 		$PageState="";
 	}
 }

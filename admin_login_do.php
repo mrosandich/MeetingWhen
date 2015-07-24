@@ -40,12 +40,23 @@ if($PageState == "dologin")
 	else
 	{
 
-		$UserName 	= GetFormValue("username", "","AlphaNumeric",1);
-		$Password 	= GetFormValue("password", "","AlphaNumeric");
+		$UserName 	= GetFormValue("username", "","UserName",1);
+		$Password 	= GetFormValue("password", "","Password");
 		$Password 	= DataBaseCleanEscapeValue(md5( $Password ));
-
-		$SelectSQL = "select * from meetingwhen_users where username='$UserName' and password='$Password' and is_activated='1' limit 1";
-
+		$SelectSQL = "select * from meetingwhen_users where username='$UserName' and password='$Password' and is_activated='1' limit 1";//this SQL will change if ldap is used
+		
+		if($UseLDAPSystem == 1){
+			$LdapCheck = new cLDAP();
+			$LdapCheck->initLDAPMySQL($link);
+			$isLoggedIn = $LdapCheck->validateUser($UserName,GetFormValue("password", "","Password"));
+			if( $isLoggedIn == 1 ){
+				$SelectSQL = "select * from meetingwhen_users where username='$UserName' and is_ldap='1' and is_activated='1' limit 1";
+			}
+		}
+		
+		
+		
+		
 		$MySqlSet = array();
 		$result = mysql_query($SelectSQL);
 		while ($hash = mysql_fetch_assoc( $result )) {
@@ -54,10 +65,11 @@ if($PageState == "dologin")
 		
 		$UserId = false;
 		$IsAdmin = false;
-		if( $MySqlSet[0]['username'] == GetFormValue("username", "","AlphaNumeric") )
-		{
-			$UserId  = $MySqlSet[0]['user_id'];
-			$IsAdmin = $MySqlSet[0]['is_admin'];
+		if(count($MySqlSet) > 0 ){
+			if( $MySqlSet[0]['username'] == GetFormValue("username", "","AlphaNumeric") ){
+				$UserId  = $MySqlSet[0]['user_id'];
+				$IsAdmin = $MySqlSet[0]['is_admin'];
+			}
 		}
 		
 		

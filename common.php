@@ -43,6 +43,9 @@ $UserNameMaxLength = 100;
 $PasswordMinLength = 6;
 $PasswordMaxLength = 100;
 
+//Use LDAP for authentication
+$UseLDAPSystem = 0;
+
 function GetFormValue($Key,$DefaultValue,$RegCleanType,$EscapeMySql = 0){
 	$ReturnValue = $DefaultValue;
 
@@ -87,8 +90,15 @@ function RegClean($InValue,$RegCleanType){
 		$InValue = preg_replace("/[^a-zA-Z0-9\s\.\-]/", "", $InValue);
 	}
 	
+	if( $RegCleanType == "UserName" ){
+		$InValue = preg_replace("/[^a-zA-Z0-9]/", "", $InValue);
+	}
+	
 	if( $RegCleanType == "Email" ){
 		$InValue = preg_replace("/[^a-zA-Z0-9\s\.\_\@]/", "", $InValue);
+	}
+	if( $RegCleanType == "Password" ){
+		
 	}
 	
 	if( $RegCleanType == "Numeric" ){

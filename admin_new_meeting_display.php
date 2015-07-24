@@ -46,7 +46,7 @@ if($PageState == "new")
 <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr><td colspan="2">Enter names and email address of the people invited</td></tr>
 	<tr id="pr_1">
-		<td>Name: <input type="text" name="n_[]" value="" id="n_1"/></td><td>Email: <input type="text" name="ae_[]" value="" id="ae_1"/></td>
+		<td>Name: <input type="text" class="person_add" name="n_[]" value="" id="n_1"/></td><td>Email: <input type="text" name="ae_[]" value="" id="ae_1"/></td>
 		<td><input type="button" value="+" onclick="AppendPersonSlots(1)" /></td>
 	</tr>
 </table>

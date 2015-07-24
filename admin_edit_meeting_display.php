@@ -35,7 +35,7 @@ if($PageState == "myedit")
 		$MySqlSet[] = $hash;
 	}
 	
-	
+	if( count($MySqlSet) >0 ){
 	$SelectSQL = "select * from meetingwhen_main_dates where user_id='" . $_SESSION['user_id'] . "' and meeting_id='$SelectedMeeting' order by date_and_time";
 	$MainDates = array();
 	$result = mysql_query($SelectSQL);
@@ -106,7 +106,7 @@ if($PageState == "myedit")
 	if(count($People) == 0){
 	?>
 	<tr id="pr_1">
-		<td>Name: <input type="text" name="n_[]" value="" id="n_1"/>
+		<td>Name: <input type="text" class="person_add" name="n_[]" value="" id="n_1"/>
 		<input type="hidden" name="peopleid[]" value="0" />
 		</td><td>Email: <input type="text" name="ae_[]" value="" id="ae_1"/></td>
 		<td><input type="button" value="+" onclick="AppendPersonSlots(1)" /></td>
@@ -134,5 +134,9 @@ Send Emails <input type="checkbox" name="doemail" value="yes" onclick="ShowEmail
 
 </script>
 <?php
+	}//end count >0
+	else{
+		echo "There was an error requesting the meeting details";
+	}
 }
 ?>

@@ -24,7 +24,7 @@ defined('SYSLOADEDADMIN') OR die('No direct access allowed.');
 ?>
 <a href="admin.php" class="<?php echo ($PageState=="" || $PageState=="home" ? 'menu_selected':'menu_unselected')?>">Home</a> | 
 <a href="admin.php?ps=new" class="<?php echo($PageState=="new" ? 'menu_selected':'menu_unselected')?>">New Meeting</a> | 
-<a href="admin.php?ps=my" class="<?php echo ($PageState=="my"  ? 'menu_selected':'menu_unselected')?>">My Meeting</a> |
+<a href="admin.php?ps=my" class="<?php echo ($PageState=="my"  ? 'menu_selected':'menu_unselected')?>">My Meetings</a> |
 <a href="admin.php?ps=profile" class="<?php echo ($PageState=="profile"  ? 'menu_selected':'menu_unselected')?>">My Profile</a> |
 <?php 
 if(IsLoggedIn() == true ){
