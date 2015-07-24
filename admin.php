@@ -93,20 +93,16 @@ include( "admin_edit_profile_do.php");
 	  if( $('#n_'+CallingID).val() != ""  && $('#ae_'+CallingID).val() != "" && CallingID == CurrentPersonSlotCount){
 		CurrentPersonSlotCount++;
 		$('#peopleslots').append('<tr id="pr_'+CurrentPersonSlotCount+'"><td>Name: <input type="text" class="person_add" id="n_'+CurrentPersonSlotCount+'" name="n_[]" value="" /><input type="hidden" name="peopleid[]" value="0" /></td><td>Email: <input type="text" id="ae_'+CurrentPersonSlotCount+'" name="ae_[]" value="" /></td><td><input type="button" value="+" onclick="AppendPersonSlots('+CurrentPersonSlotCount+')" /></td></tr>');  
+		$('#n_' + CurrentPersonSlotCount).on("keydown", function (event){if (event.keyCode === $.ui.keyCode.TAB && $(this).autocomplete("instance").menu.active) {event.preventDefault();}}).autocomplete({source: function (request, response) {$.getJSON("admin_callback_jquery.php?s=s", {term: extractLast(request.term)}, response);},search: function () { var term = extractLast(this.value);if (term.length < 2) {return false;}},focus: function () {return false;},select: function (event, ui) {var terms = split(this.value);terms.pop();terms.push(ui.item.label); AddPersonEmail(ui.item.id, ui.item.value,$(this).attr('id') );terms.push("");return false;} });
 	}
   }
   
    //autocomplete for DX
     $(function () {
-        function split(val) {
-            return val.split(/,\s*/);
-        }
-        function extractLast(term) {
-            return split(term).pop();
-        }
+       
 
-      $(".person_add")
-      .bind("keydown", function (event) {
+      $('#n_1')
+      .on("keydown", function (event) {
           if (event.keyCode === $.ui.keyCode.TAB &&
             $(this).autocomplete("instance").menu.active) {
               event.preventDefault();
@@ -137,7 +133,12 @@ include( "admin_edit_profile_do.php");
           }
       });
     });
-	
+	 function split(val) {
+            return val.split(/,\s*/);
+        }
+	function extractLast(term) {
+		return split(term).pop();
+	}
 	function AddPersonEmail(inName,inEmail,inId){
 		//alert( inName + "," + inEmail + "," + inId);
 		$('#' + inId).val(inName);
