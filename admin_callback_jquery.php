@@ -3,6 +3,8 @@
 	Author	: Mell Rosandich
 	Date	: 6/29/2015
 	email	: mell@ourace.com
+	website : www.ourace.com
+	sample	: http://www.ourace.com/code_examples/meetwhen/index.php?m=559d86231973e559d86231977a
 	
 	
 	Copyright 2015 Mell Rosandich
@@ -32,7 +34,7 @@ if( IsLoggedIn() == true ){
 
 		$term = GetQueryValue("term","","AlphaNumeric",1);
 		$jsonString = "[";
-		$CheckSql = "SELECT name,email FROM tachc_org.meetingwhen_people where user_id='" . $_SESSION['user_id'] . "' and name like '%$term%' group by name,email order by name;";
+		$CheckSql = "SELECT name,email FROM meetingwhen_people where user_id='" . $_SESSION['user_id'] . "' and name like '%$term%' group by name,email order by name;";
 		$result = mysql_query($CheckSql);
 		while ($row = mysql_fetch_assoc( $result )) 
 		{

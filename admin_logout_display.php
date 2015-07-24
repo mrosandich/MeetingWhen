@@ -3,7 +3,8 @@
 	Author	: Mell Rosandich
 	Date	: 6/29/2015
 	email	: mell@ourace.com
-	
+	website : www.ourace.com
+	sample	: http://www.ourace.com/code_examples/meetwhen/index.php?m=559d86231973e559d86231977a	
 	
 	Copyright 2015 Mell Rosandich
 
