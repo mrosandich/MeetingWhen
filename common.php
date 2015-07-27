@@ -53,6 +53,11 @@ $LDAPConfig['app_pass'] 				= 'Com!plex%Passw0rd';
 $LDAPConfig['app_search_user_base'] 	= "OU=Austin,DC=ourace,DC=com";
 $LDAPConfig['app_use_activedirectory'] 	= 1;//set to 0 if you want to use a a normal search expression
 
+//these are used for another way to auth when you don't want your LDAP access on the same server or for something custom.
+//An example of this can be seen in the file class_ldap validateUserRemote($username,$password) where it calls a curl to get the credentials
+$LDAPConfig['app_use_alt_method'] 		= 0; //set to 1 to use the validateUserRemote($username,$password) function
+$LDAPConfig['app_use_alt_method_url'] 	= "http://YourWebsitenameHere.com/meeting/service_ldap_remote.php"; //some remote curl page with auth
+
 function GetFormValue($Key,$DefaultValue,$RegCleanType,$EscapeMySql = 0){
 	$ReturnValue = $DefaultValue;
 
