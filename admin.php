@@ -32,6 +32,12 @@ $PageState = GetQueryValue("ps","","Alpha");
 $UserMessageResponse = "";
 session_start();
 
+$HTTPPrefix = "http://";
+if(isset($_SERVER['HTTPS'])) {
+    if ($_SERVER['HTTPS'] == "on") {
+        $HTTPPrefix = "https://";
+    }
+}
 
 include( "admin_login_do.php");
 include( "admin_logout_do.php");
@@ -50,9 +56,9 @@ include( "admin_edit_profile_do.php");
 
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="<?php echo $HTTPPrefix;?>code.jquery.com/jquery-1.10.2.js"></script>
+<script src="<?php echo $HTTPPrefix;?>code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="<?php echo $HTTPPrefix;?>code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="meetwhen_admin.css">
 <link rel="stylesheet" href="slick_dtp.css">
 <script src="slick_dtp.js"></script>

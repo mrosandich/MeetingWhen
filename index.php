@@ -25,12 +25,19 @@ define('SYSLOADED', "Yes Loaded");
 include("common.php");
 include("class_meeting.php");
 
+$HTTPPrefix = "http://";
+if(isset($_SERVER['HTTPS'])) {
+    if ($_SERVER['HTTPS'] == "on") {
+        $HTTPPrefix = "https://";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <head>
 <title>Meet When?</title>
 <meta name="viewport" content="width=device-width">
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="<?php echo $HTTPPrefix;?>code.jquery.com/jquery-1.10.2.js"></script>
 <link rel="stylesheet" href="meetwhen_client.css">
 <script>
 function SendMsg(m,pguid,ts,cntrl)
