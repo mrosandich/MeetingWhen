@@ -153,7 +153,7 @@ function IsLoggedInAndAdmin(){
 
 function SendEmailClient($FromName,$FromEmail,$MeetingId,$EmailSig,$MeetingTitle,$MeetingGuid){
 	
-	$EmailsSQL = "select * from meeting_people where meeting_id='$MeetingId' and inactive='0'";
+	$EmailsSQL = "select * from meetingwhen_people where meeting_id='$MeetingId' and inactive='0'";
 	$result = mysql_query($EmailsSQL);
 	$MeetingPeople = array();
 	while ($hash = mysql_fetch_assoc( $result )) 
@@ -168,7 +168,7 @@ function SendEmailClient($FromName,$FromEmail,$MeetingId,$EmailSig,$MeetingTitle
 		$Subject = $MeetingTitle;
 		$message = "Hello $ToName, <br />";
 		$message .= "To help facilitate our meeting please go the below URL and select time(s) you are available. Please don't forward this email because each invite is unique and the below URL represents your response.<br /><br />";
-		$message .= "<a href=\"" . $MeetingWhenIndexPath . "?m=$MeetingGuid&p=$ToGUID\">" . $MeetingWhenIndexPath . "?m=$MeetingGuid&p=$ToGUID</a><br />";
+		$message .= "<a href=\"" . $GLOBALS['MeetingWhenIndexPath'] . "?m=$MeetingGuid&p=$ToGUID\">" . $GLOBALS['MeetingWhenIndexPath'] . "?m=$MeetingGuid&p=$ToGUID</a><br />";
 		
 		if( $EmailSig != "" )
 		{
