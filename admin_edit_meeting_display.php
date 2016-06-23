@@ -120,9 +120,9 @@ if($PageState == "myedit")
 <br />
 Send Emails <input type="checkbox" name="doemail" value="yes" onclick="ShowEmail(this);" unchecked/><br />
 <table id="emblock">
-<tr><td>Your Name:</td><td><input type="text" value="" name="sendername" /></td></tr>
-<tr><td>Your Email:</td><td><input type="text" value="" name="senderemail" /></td></tr>
-<tr><td>Email Signature</td><td><textarea cols="60" rows="8" name="emailsig" /></textarea></td></tr>
+<tr><td>Your Name:</td><td><input type="text" value="<?php echo $_SESSION['fullname'];?>" name="sendername" /></td></tr>
+<tr><td>Your Email:</td><td><input type="text" value="<?php echo $_SESSION['email'];?>" name="senderemail" /></td></tr>
+<tr><td>Email Signature</td><td><textarea cols="60" rows="8" name="emailsig" /><?php echo htmlentities($_SESSION['email_signature']);?></textarea></td></tr>
 </table>
 <input type="submit" value="Save" id="saveform" />
 </form>
